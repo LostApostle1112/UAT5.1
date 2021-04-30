@@ -1,0 +1,227 @@
+<!-- file creator: James Tramel -->
+<!-- email jamesltramel@gmail.com-->
+<!-- ! alone will pull up a basic quick fill starter page, specify doc type -->
+<!DOCTYPE html>
+<!-- Specify language-->
+<html lang="en">
+<!-- The head deals with the www search bar-->
+
+
+
+
+
+<head>
+    <!-- refrencing our code to be used-->
+    <script src="dataLoader-1.js"></script>
+    <script src="timerCode.js"></script>
+    <script src="soundBoard.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- comments are labled like this in html-->
+    <title>
+
+        James' UATSpace Page
+
+    </title>
+</head>
+
+
+
+
+
+
+
+
+<!-- Our body-->
+
+<body>
+
+    <script>
+        //needed for dom
+        // we assign the time var as to have our display update
+        var theTime = new Date();
+        var tempTime = new Date();
+        var time_interval = 5000;
+        var last_iteration = 0;
+        var running = true;
+        var index = 0;
+        var timer;
+        // to get data from data loader
+        var data = getData();
+
+
+        //Here we use our time var to set our display changes to Update our display
+
+        function updateDisplay() {
+            theTime = new Date();
+
+            //fill in the table
+            var timeRead = data[index].time_seconds;
+
+            if (timeRead >= 10) {
+                document.getElementById("data").rows["seconds"].
+                    // here we call the dataRow function and pass it our values for each row
+                innerHTML = dataRow("Time Elapsed", data[index].time_seconds, "seconds");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["lat"].innerHTML = dataRow("Latitude", data[index].latitude, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["long"].innerHTML = dataRow("Longitude", data[index].longitude, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["gpsAlt"].innerHTML = dataRow("GPS Altitude", data[index].gps_altitude, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["bmpsAlt"].innerHTML = dataRow("BMP Sensor Altitude", data[index].bmpSensor_altitude, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["bmpsPres"].innerHTML = dataRow("BMP Sensor Pressure", data[index].bmpSensor_pressure, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["bmpsTemp"].innerHTML = dataRow("BMP Sensor Temp", data[index].bmpSensor_temp, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["diTempSen"].innerHTML = dataRow("Digital Sensor Temp", data[index].digSensor_temp, " ");
+
+                document.getElementById("data").rows["cssTempS"].innerHTML = dataRow("CSS Sensor Temp", data[index].cssSensor_temp, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["cssEco2S"].innerHTML = dataRow("CSS Sensor EC02", data[index].cssSensor_ec02, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["cssTVOC"].innerHTML = dataRow("CSS Sensor TVOC", data[index].cssSensor_tvoc, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["uv"].innerHTML = dataRow("U.V.", data[index].uv, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["accelX"].innerHTML = dataRow("Accelreation X", data[index].accel_x, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["accelY"].innerHTML = dataRow("Accelreation Y", data[index].accel_y, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["accelZ"].innerHTML = dataRow("Accelreation Z", data[index].accel_z, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["magX"].innerHTML = dataRow("Magnetic X", data[index].magnetic_x, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["magY"].innerHTML = dataRow("Magnetic Y", data[index].magnetic_y, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["magZ"].innerHTML = dataRow("Magnetic Z", data[index].magnetic_z, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["gyroX"].innerHTML = dataRow("Gyro X", data[index].gyro_x, " ");
+                // here we call the dataRow function and pass it our values for each row
+                document.getElementById("data").rows["gyroY"].innerHTML = dataRow("Gyro Y", data[index].gyro_y, " ");
+                // AAAAAnd the last one!!
+                document.getElementById("data").rows["gyroZ"].innerHTML = dataRow("Gyro Z", data[index].gyro_z, " ");
+            }
+            //if the index is less than 500 go up by 1 each iteration, else go to 0
+            if (index < 500) {
+                index++;
+            } else {
+                index = 0;
+            }
+        }
+    </script>
+
+
+    <!-- We have to create a table to manipulate the layout more (this one is for the heading)-->
+    <table>
+
+        <!-- Table Data -->
+        <td> <img src="UATspaceLogo-2_new.jpg"> </td>
+
+        <td>
+            <h1>UAT Space Program</h1>
+        </td>
+
+    </table>
+
+    <!--create another table for our input/output display setting the border to two, giving it an id, setting the total width to 70% and setting the class to "mainTable" -->
+    <table border="2" id="data" width="70%" class="mainTable">
+
+
+        <col style="width:35%;">
+        <!-- Setting the width of our columns equal to each other in width 35% and 35% = 70%-->
+        <col style="width:35%;">
+
+
+        <!-- Creating space for a table head-->
+        <thead>
+
+
+            <!-- **Creating a table refrence point**
+        <tr style = "font-family: fantasy;"
+
+         **NOTE: MOVED THESE TO MY CSS CONTROLLED BY OUR BODY SCRIPT
+
+           ** Creating the table head **
+        <th align="left">Data Type</th>
+        <th align="left">Reading</th>-->
+
+            <th>Data Type</th>
+            <th>Reading</th>
+
+            </tr>
+            <!-- I think tr means 'table refrence' but I can't remember-->
+
+            <!--table Head-->
+        </thead>
+
+        <!-- For the table body I gave each table data a class so I could modify my text in my CSS instead of here. I'm not sure much else can be said about the table data-->
+        <tbody>
+
+            <!-- setting my table refrence id's so I can use them later-->
+            <tr id="seconds"></tr>
+            <tr id="lat"></tr>
+            <tr id="long"></tr>
+            <tr id="gpsAlt"></tr>
+            <tr id="bmpsAlt"></tr>
+            <tr id="bmpsPres"></tr>
+            <tr id="bmpsTemp"></tr>
+            <tr id="diTempSen"></tr>
+            <tr id="cssTempS"></tr>
+            <tr id="cssEco2S"></tr>
+            <tr id="cssTVOC"></tr>
+            <tr id="uv"></tr>
+            <tr id="accelX"></tr>
+            <tr id="accelY"></tr>
+            <tr id="accelZ"></tr>
+            <tr id="magX"></tr>
+            <tr id="magY"></tr>
+            <tr id="magZ"></tr>
+            <tr id="gyroX"></tr>
+            <tr id="gyroY"></tr>
+            <tr id="gyroZ"></tr>
+
+
+        </tbody>
+
+
+    </table>
+
+
+    <!--break to drop down a line-->
+    <br>
+    <!-- setting id for countdown timer-->
+
+    <!-- add a line break-->
+
+
+    <!-- to add buttons -->
+
+    <!-- Start button-->
+    <button class="button" id="startButton" onclick="start();">Start</button>
+
+    <!-- Stop button-->
+    <button class="button" id="stopButton" onclick="stop();">Stop</button>
+    <br>
+
+
+    <!-- add a line break-->
+    <br>
+
+    <!-- Start Music button-->
+    <button class="button" id="SpaceMusic" onclick="playSpaceMusic();">Play Music</button>
+
+    <!-- Start Thruster button-->
+    <button class="button" id="Thrusters" onclick="playThrusters();">Thrusters</button>
+    <!-- Stop Music button-->
+    <button class="button" id="StopMusic" onclick="stopMusic();">Stop Music</button>
+    <!-- Stop Thruster button-->
+    <button class="button" id="StopThrusters" onclick="stopThrusters();">Stop Thrusters</button>
+    <!-- heading size 1 titling the game-->
+
+    <br>
+    <!-- close the body-->
+</body>
+<!-- close the html-->
+
+</html>

@@ -1,0 +1,94 @@
+<!-- ! alone will pull up a basic quick fill starter page, specify doc type -->
+<!DOCTYPE html>
+<html>
+<!-- This is the Log In HTML page-->
+<!-- file creator: James Tramel -->
+<!-- email jamesltramel@gmail.com-->
+
+<head>
+<!--These next two lines refrence my script and CSS making them useful in my HTML-->
+    <script src="logInCode.js"> </script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!--setting the browser tab-->
+    <title>
+        UATSpace Login
+    </title>
+
+ <!-- opening our head-->
+</head>
+<!-- this is all created for our UAT Space Log in page-->
+<body>
+
+    <!-- log ins like these must be created to protect our code or site from would be hackers-->
+    <h1>
+        Welcome to UAT Space Login Page
+    </h1>
+
+    <!-- break gives us space between our media-->
+    <br>
+    <!-- break break break break break-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+ <!--setting the id for the log in paragraph -->
+    <p1 id="loginStatus">
+
+        Status of Login...
+<!-- Do I really need to comment after every line?-->
+    </p1 >
+
+    <br>
+
+    <br>
+<!-- break break break break....kinda redundant if you ask me-->
+    <br>
+
+    <br>
+<!-- Finally, some action!! Setting 'onsubmit' to false so when we place in the credentials we can enter our HTML space page-->
+
+<!-- this is done as a form of security and is necessary to protect your program from would be hackers-->
+<!--form allows us to create a form to place in our credentials-->
+    <form id="credenSubmit" onsubmit="return false">
+
+        <!--set the first name label, set the input type, and then create it an id to store the info in-->
+        First Name: <input type="text" id="fName" />
+        <br>
+        <br>
+        <!-- adding breaks to give us room between inputs-->
+        <br>
+        <!--set the last name label, set the input type, and then create it an id to store the info in-->
+        Last Name: <input type="text" id="lName" />
+        <br>
+        <br>
+        <!-- adding breaks to give us room between inputs-->
+        <br>
+        <!--set the Badge Number label, set the input type to "number", and then create it an id to store the info in-->
+        Badge Number: <input type="number" id="bNumber" />
+        <br>
+        <br>
+        <!-- adding breaks to give us room between inputs-->
+        <br>
+        <!-- Calling the "checkCreds function once the forms are filled"-->
+        <input type="submit" onclick="checkCreds();" />
+<!-- closing our form-->
+    </form>
+    <!-- the next 10 breaks were necessary in order to even out the gradient -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--closing the body-->
+</body>
+
+<!--closing the html-->
+</html>
